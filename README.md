@@ -76,3 +76,7 @@ curl http://localhost:8080/bookmarks
 - [Go 1.22+](https://go.dev/dl/)
 - [golangci-lint](https://golangci-lint.run/welcome/install/)
 - [Dark Factory CLI](https://godarkfactory.com)
+
+## Configuring the Claude model
+
+Dark Factory uses whatever model is configured in your Claude Code project settings. To change the model (e.g. to use Sonnet for faster/cheaper runs, or Opus for more complex tasks), update your Claude Code settings — Dark Factory will pick it up automatically.
