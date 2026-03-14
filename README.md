@@ -1,6 +1,6 @@
 # Dark Factory Demo: Go Bookmarks API
 
-A simple Go REST API for managing bookmarks, designed as a hands-on tutorial for [Dark Factory](https://godark.dev).
+A simple Go REST API for managing bookmarks, designed as a hands-on tutorial for [Dark Factory](https://godarkfactory.com).
 
 ## What you'll learn
 
@@ -44,7 +44,7 @@ curl http://localhost:8080/health
 # Create a bookmark
 curl -X POST http://localhost:8080/bookmarks \
   -H "Content-Type: application/json" \
-  -d '{"url":"https://godark.dev","title":"Dark Factory"}'
+  -d '{"url":"https://godarkfactory.com","title":"Dark Factory"}'
 
 # List bookmarks
 curl http://localhost:8080/bookmarks
@@ -75,4 +75,4 @@ curl http://localhost:8080/bookmarks
 
 - [Go 1.22+](https://go.dev/dl/)
 - [golangci-lint](https://golangci-lint.run/welcome/install/)
-- [Dark Factory CLI](https://godark.dev)
+- [Dark Factory CLI](https://godarkfactory.com)
