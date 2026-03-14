@@ -1,0 +1,20 @@
+version: "2"
+
+linters:
+  enable:
+    - gosec
+    - govet
+    - errcheck
+    - staticcheck
+    - misspell
+
+  settings:
+    gosec:
+      excludes:
+        - G104 # unhandled errors on deferred calls
+        - G114 # http.ListenAndServe without timeout
+        - G706 # log injection on startup messages
+
+formatters:
+  enable:
+    - gofmt
