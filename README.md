@@ -83,13 +83,14 @@ auto_merge:
   feature: none       # human reviews every PR (we'll change this later)
   rollup: none
 
+# Build, test, format, and lint commands (auto-detected — verify for your project)
 build_command: "go build ./..."
 test_command: "go test ./..."
 format_command: "gofmt -l -d ."
-lint_command: "golangci-lint run ./"
+lint_command: "golangci-lint run ./..."
 ```
 
-Dark Factory auto-detected the Go toolchain and filled in the build, test, and lint commands for you.
+Dark Factory detected `go.mod` and filled in the build, test, format, and lint commands automatically. These are written as active config values — review them and adjust if your project uses a different build chain (e.g. `make build` instead of `go build ./...`).
 
 ### Step 4: Run the doctor
 
@@ -233,7 +234,7 @@ The commands come from your `godark.yaml`:
 ```yaml
 build_command: "go build ./..."    # must compile
 test_command: "go test ./..."      # tests must pass
-lint_command: "golangci-lint run ./" # no lint violations
+lint_command: "golangci-lint run ./..." # no lint violations
 ```
 
 The CI pipeline in `.github/workflows/ci.yml` runs the same checks on GitHub Actions. Dark Factory waits for required status checks to pass before merging.
