@@ -83,6 +83,10 @@ auto_merge:
   feature: none       # human reviews every PR (we'll change this later)
   rollup: none
 
+runtime:
+  name: go
+  version: "1.25.0"
+
 # Build, test, format, and lint commands (auto-detected — verify for your project)
 build_command: "go build ./..."
 test_command: "go test ./..."
@@ -90,7 +94,7 @@ format_command: "gofmt -l -d ."
 lint_command: "golangci-lint run ./..."
 ```
 
-Dark Factory detected `go.mod` and filled in the build, test, format, and lint commands automatically. These are written as active config values — review them and adjust if your project uses a different build chain (e.g. `make build` instead of `go build ./...`).
+Dark Factory detected `go.mod` and filled in the runtime, build, test, format, and lint commands automatically. The `runtime` block tells the Docker sandbox which toolchain to install — without it, commands like `gofmt` and `go test` won't be available inside the container. Review the detected values and adjust if your project uses a different build chain (e.g. `make build` instead of `go build ./...`).
 
 ### Step 4: Run the doctor
 
