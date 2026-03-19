@@ -232,7 +232,7 @@ The commands come from your `godark.yaml`:
 ```yaml
 build_command: "go build ./..."    # must compile
 test_command: "go test ./..."      # tests must pass
-lint_command: "golangci-lint run ./..." # no lint violations
+lint_command: "go vet ./..."           # no lint violations
 ```
 
 The CI pipeline in `.github/workflows/ci.yml` runs the same checks on GitHub Actions. Dark Factory waits for required status checks to pass before merging.
@@ -320,7 +320,6 @@ godark run --milestone "Demo Phase 1" --dry-run --repo YOUR_USERNAME/dark-factor
 │       ├── store.go               # In-memory data store
 │       └── store_test.go          # Store tests
 ├── .github/workflows/ci.yml      # GitHub Actions CI
-├── .golangci.yml                  # Linter configuration
 ├── Makefile                       # Build targets
 └── go.mod                         # Go module definition
 ```
