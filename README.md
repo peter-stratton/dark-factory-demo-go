@@ -15,8 +15,7 @@ This demo walks you through real-world Dark Factory workflows using a Go project
 
 ## Prerequisites
 
-- [Go 1.22+](https://go.dev/dl/)
-- [golangci-lint](https://golangci-lint.run/welcome/install/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) — or any Docker daemon
 - [Dark Factory CLI](https://godarkfactory.com)
 - [GitHub CLI (`gh`)](https://cli.github.com/) — installed and authenticated
 - A GitHub account
