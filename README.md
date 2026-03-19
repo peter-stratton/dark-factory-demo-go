@@ -104,18 +104,13 @@ Verify your environment is ready:
 godark doctor
 ```
 
-This runs through the following checks:
+This checks the host-level requirements:
 
 - Docker daemon running
 - `gh` CLI installed and authenticated
 - `ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN` set
-- Go toolchain available
-- Python 3 available
-- `golangci-lint` installed
 
-Fix anything that fails before continuing.
-
-> **Note:** Python 3 is only required when running in `--no-sandbox` mode, which is not recommended. If you're using the default Docker sandbox (and you should be), you can safely ignore that warning.
+Fix anything that fails before continuing. Language toolchains (Go, Python, etc.) are installed inside the Docker sandbox automatically — you don't need them on your host machine.
 
 ### Step 5: Commit the harness files
 
