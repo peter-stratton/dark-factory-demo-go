@@ -91,7 +91,7 @@ runtime:
 build_command: "go build ./..."
 test_command: "go test ./..."
 format_command: "gofmt -l -d ."
-lint_command: "golangci-lint run ./..."
+lint_command: "go vet ./..."
 ```
 
 Dark Factory detected `go.mod` and filled in the runtime, build, test, format, and lint commands automatically. The `runtime` block tells the Docker sandbox which toolchain to install — without it, commands like `gofmt` and `go test` won't be available inside the container. Review the detected values and adjust if your project uses a different build chain (e.g. `make build` instead of `go build ./...`).
