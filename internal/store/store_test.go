@@ -84,30 +84,3 @@ func TestUpdateNotFound(t *testing.T) {
 	}
 }
 
-func TestDelete(t *testing.T) {
-	s := New()
-
-	b := s.Create(model.CreateBookmarkRequest{
-		URL:   "https://example.com",
-		Title: "Example",
-	})
-
-	err := s.Delete(b.ID)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	_, err = s.Get(b.ID)
-	if err != model.ErrNotFound {
-		t.Fatalf("expected ErrNotFound after delete, got %v", err)
-	}
-}
-
-func TestDeleteNotFound(t *testing.T) {
-	s := New()
-
-	err := s.Delete("nonexistent")
-	if err != model.ErrNotFound {
-		t.Fatalf("expected ErrNotFound, got %v", err)
-	}
-}

@@ -88,18 +88,6 @@ func (s *Store) Update(id string, req model.UpdateBookmarkRequest) (model.Bookma
 	return b, nil
 }
 
-// Delete removes a bookmark by ID.
-func (s *Store) Delete(id string) error {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	if _, ok := s.bookmarks[id]; !ok {
-		return model.ErrNotFound
-	}
-	delete(s.bookmarks, id)
-	return nil
-}
-
 func generateID() string {
 	b := make([]byte, 8)
 	rand.Read(b)

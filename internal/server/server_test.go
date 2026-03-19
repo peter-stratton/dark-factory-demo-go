@@ -140,35 +140,3 @@ func TestGetBookmarkNotFound(t *testing.T) {
 	}
 }
 
-func TestDeleteBookmark(t *testing.T) {
-	_, handler := setupTestServer()
-
-	// Create a bookmark
-	body := `{"url":"https://example.com","title":"Example"}`
-	req := httptest.NewRequest("POST", "/bookmarks", bytes.NewBufferString(body))
-	w := httptest.NewRecorder()
-	handler.ServeHTTP(w, req)
-
-	var created model.Bookmark
-	if err := json.NewDecoder(w.Body).Decode(&created); err != nil {
-		t.Fatalf("failed to decode response: %v", err)
-	}
-
-	// Delete it
-	req = httptest.NewRequest("DELETE", "/bookmarks/"+created.ID, nil)
-	w = httptest.NewRecorder()
-	handler.ServeHTTP(w, req)
-
-	if w.Code != http.StatusNoContent {
-		t.Fatalf("expected status 204, got %d", w.Code)
-	}
-
-	// Verify it's gone
-	req = httptest.NewRequest("GET", "/bookmarks/"+created.ID, nil)
-	w = httptest.NewRecorder()
-	handler.ServeHTTP(w, req)
-
-	if w.Code != http.StatusNotFound {
-		t.Fatalf("expected status 404 after delete, got %d", w.Code)
-	}
-}

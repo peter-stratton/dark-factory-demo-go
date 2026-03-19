@@ -28,7 +28,6 @@ func (s *Server) Router() http.Handler {
 	mux.HandleFunc("POST /bookmarks", s.handleCreate)
 	mux.HandleFunc("GET /bookmarks/{id}", s.handleGet)
 	mux.HandleFunc("PATCH /bookmarks/{id}", s.handleUpdate)
-	mux.HandleFunc("DELETE /bookmarks/{id}", s.handleDelete)
 	mux.HandleFunc("GET /health", s.handleHealth)
 
 	return mux
@@ -95,22 +94,6 @@ func (s *Server) handleUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	writeJSON(w, http.StatusOK, bookmark)
-}
-
-func (s *Server) handleDelete(w http.ResponseWriter, r *http.Request) {
-	id := extractID(r)
-
-	err := s.store.Delete(id)
-	if err != nil {
-		if errors.Is(err, model.ErrNotFound) {
-			writeError(w, http.StatusNotFound, "bookmark not found")
-			return
-		}
-		writeError(w, http.StatusInternalServerError, "internal error")
-		return
-	}
-
-	w.WriteHeader(http.StatusNoContent)
 }
 
 func extractID(r *http.Request) string {
